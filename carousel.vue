@@ -116,25 +116,28 @@
       <!--@click="navigateToCard(index)"-->
     </div>
 
-    <client-only>
-      <button-icon
-        v-for="(button, index) in 2"
-        :key="index"
-        class="sm:flex absolute z-20 hidden"
-        :class="{
-          'bottom-[218px]': type === 'DEFAULT',
-          'bottom-[302px]': type === 'IMAGES',
-          'left-6': index === 0,
-          'right-6': index === 1,
-        }"
-        background
-        :icon="index === 0 ? prevIconComputed : nextIconComputed"
-        big-icon
-        gradient
-        :color="color"
-        @click="index === 0 ? prev() : next()"
-      />
-    </client-only>
+    <button-icon
+      v-for="button, index in 2"
+      :key="index"
+      class="
+        sm:flex
+        absolute
+        z-20
+        hidden
+        "
+      :class="{
+        'bottom-[218px]' : type === 'DEFAULT',
+        'bottom-[302px]' : type === 'IMAGES',
+        'left-6': index === 0,
+        'right-6': index === 1,
+      }"
+      background
+      :icon="index === 0 ? prevIconComputed : nextIconComputed"
+      big-icon
+      gradient
+      :color="color"
+      @click="index === 0 ? prev() : next()"
+    />
     <!-- NAVIGATION ENDS -->
   </div>
 </template>
@@ -150,10 +153,6 @@ import {
 import {
   useDebounceFn,
 } from '@vueuse/shared';
-
-import {
-  ClientOnly,
-} from '@/components/client-only/client-only';
 
 import ButtonSmall from '@/components/button-small/button-small.vue';
 import ButtonIcon from '@/components/button-icon/button-icon.vue';
